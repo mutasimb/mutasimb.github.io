@@ -1,0 +1,25 @@
+{
+  "name": "mutasimb.github.io",
+  "version": "1.0.0",
+  "description": "My homepage on GitHub Pages.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mutasimb/mutasimb.github.io.git"
+  },
+  "author": "Mu'tasim Billah",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mutasimb/mutasimb.github.io/issues"
+  },
+  "homepage": "https://github.com/mutasimb/mutasimb.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-group-css-media-queries": "^1.2.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-webserver": "^0.9.1"
+  }
+}
