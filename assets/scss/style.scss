@@ -6,6 +6,21 @@
 
 html {height: 100%;}
 
+#preloader {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.25s ease;
+&.visible {
+  visibility: visible;
+  opacity: 1;
+}
+}
+
 body {
   position: relative;
   height: 100%;
