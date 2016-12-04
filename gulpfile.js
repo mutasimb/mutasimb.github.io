@@ -51,3 +51,7 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('serve', ['watch', 'html', 'js', 'css', 'webserver']);
+
+// Both the tasks combined
+
+gulp.task('default', ['csswatch', 'serve']);

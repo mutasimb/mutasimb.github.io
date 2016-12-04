@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700');
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Raleway:400,700');
 
 * {
   box-sizing: border-box;
@@ -11,6 +11,7 @@ body {
   height: 100%;
   margin: 0;
   color: #111111;
+  font-family: 'Raleway', sans-serif;
   &::before {
     content: "";
     display: block;
@@ -44,5 +45,27 @@ header {
     margin: 0;
     font-family: 'Libre Baskerville', serif;
     font-size: 48px;
+  }
+  h4 {
+    font-weight: 700;
+    color: #aaaaaa;
+  }
+  .social {
+    margin-top: 45px;
+    padding-left: 0;
+    list-style-type: none;
+    height: 19px;
+    a {
+      color: #333333;
+      li {
+        float: left;
+        i {
+          font-size: 18px;
+        }
+      }
+      & + a li {
+        margin-left: 15px;
+      }
+    }
   }
 }
