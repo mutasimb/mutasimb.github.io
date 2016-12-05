@@ -53,6 +53,10 @@ body {
 }
 
 header {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
   position: fixed;
   top: 0;
   left: 0;
@@ -61,7 +65,7 @@ header {
   width: 50%;
   padding-left: 5vw;
   padding-right: 30px;
-  padding-top: 55vh;
+  padding-bottom: 60px;
   h1 {
     margin: 0;
     font-family: 'Libre Baskerville', serif;
@@ -70,6 +74,10 @@ header {
   h4 {
     font-weight: 700;
     color: #aaaaaa;
+    margin-bottom: 0;
+    span {
+      margin: 0 5px;
+    }
   }
   .social {
     margin-top: 45px;
@@ -85,15 +93,39 @@ header {
         }
       }
       & + a li {
-        margin-left: 15px;
+        margin-left: 22.5px;
       }
+    }
+  }
+  .navigation {
+    position: relative;
+    width: 100%;
+    margin-top: 165px;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style-type: none;
+    li {
+      float: left;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 12px;
+      & + li {
+        margin-left: 30px;
+      }
+    &#under-construction {
+      position: absolute;
+      right: 0;
+      margin-left: 0;
+      cursor: auto;
+    }
     }
   }
 }
 
 // Animation classes
 
-.animate, header .social .fa {
+.animate, header .social .fa, header .navigation li {
   animation-duration: 0.75s;
   animation-fill-mode: both;
   animation-timing-function: ease;
@@ -115,15 +147,28 @@ header {
   }
 }
 
-.fadeInRight {
-  animation-name: fadeInRight;
-}
-
 @keyframes fadeInUp {
-  from {opacity: 0; transform: translate3d(0, 10px, 0);}
-  to {opacity: 1; transform: none;}
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.fadeInUp {
-  animation-name: fadeInUp;
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
 }
+
+.fadeInRight {animation-name: fadeInRight;}
+.fadeInUp {animation-name: fadeInUp;}
+.fadeOutUp {animation-name: fadeOutUp;}

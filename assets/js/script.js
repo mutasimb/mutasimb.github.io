@@ -10,6 +10,8 @@ window.addEventListener("load", function() {
 
   var prelSec = document.getElementById("preloader");
   var socialBtns = document.querySelectorAll("header .social .fa");
+  var navBtns = document.querySelectorAll("header .navigation li:not(#under-construction)");
+  var underConstruction = document.getElementById("under-construction");
 
   removeClass(prelSec, "visible");
 
@@ -33,5 +35,25 @@ window.addEventListener("load", function() {
     }
 
   }, 750);
+
+  setTimeout(function() {
+
+    for(i = 0; i < navBtns.length; i++) {
+      addClass(navBtns[i], "fadeInUp");
+      navBtns[i].addEventListener("click", function() {
+        if(underConstruction.classList.length == 0) {
+          addClass(underConstruction, "fadeInUp");
+          setTimeout(function() {
+            addClass(underConstruction, "fadeOutUp");
+            setTimeout(function() {
+              removeClass(underConstruction, "fadeInUp");
+              removeClass(underConstruction, "fadeOutUp");
+            }, 750);
+          }, 3000);
+        }
+      });
+    }
+
+  }, 1250);
 
 });

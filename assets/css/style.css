@@ -57,6 +57,10 @@ body::after {
 }
 
 header {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+  align-items: flex-start;
   position: fixed;
   top: 0;
   left: 0;
@@ -65,7 +69,7 @@ header {
   width: 50%;
   padding-left: 5vw;
   padding-right: 30px;
-  padding-top: 55vh;
+  padding-bottom: 60px;
 }
 
 header h1 {
@@ -77,6 +81,11 @@ header h1 {
 header h4 {
   font-weight: 700;
   color: #aaaaaa;
+  margin-bottom: 0;
+}
+
+header h4 span {
+  margin: 0 5px;
 }
 
 header .social {
@@ -99,11 +108,40 @@ header .social a li i {
 }
 
 header .social a + a li {
-  margin-left: 15px;
+  margin-left: 22.5px;
+}
+
+header .navigation {
+  position: relative;
+  width: 100%;
+  margin-top: 165px;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+
+header .navigation li {
+  float: left;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+header .navigation li + li {
+  margin-left: 30px;
+}
+
+header .navigation li#under-construction {
+  position: absolute;
+  right: 0;
+  margin-left: 0;
+  cursor: auto;
 }
 
 .animate,
-header .social .fa {
+header .social .fa,
+header .navigation li {
   animation-duration: 0.75s;
   animation-fill-mode: both;
   animation-timing-function: ease;
@@ -134,10 +172,6 @@ header .social .fa {
   }
 }
 
-.fadeInRight {
-  animation-name: fadeInRight;
-}
-
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -150,6 +184,26 @@ header .social .fa {
   }
 }
 
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+.fadeInRight {
+  animation-name: fadeInRight;
+}
+
 .fadeInUp {
   animation-name: fadeInUp;
+}
+
+.fadeOutUp {
+  animation-name: fadeOutUp;
 }
