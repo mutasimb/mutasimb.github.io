@@ -48,7 +48,7 @@ window.addEventListener("load", function() {
             setTimeout(function() {
               removeClass(underConstruction, "fadeInUp");
               removeClass(underConstruction, "fadeOutUp");
-            }, 750);
+            }, 500);
           }, 3000);
         }
       });

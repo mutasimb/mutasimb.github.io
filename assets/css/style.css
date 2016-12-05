@@ -137,6 +137,7 @@ header .navigation li#under-construction {
   right: 0;
   margin-left: 0;
   cursor: auto;
+  animation-duration: 0.5s !important;
 }
 
 .animate,
