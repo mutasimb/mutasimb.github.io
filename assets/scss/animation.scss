@@ -1,0 +1,47 @@
+.animate, header .social .fa, header .navigation li {
+  animation-duration: 0.75s;
+  animation-fill-mode: both;
+  animation-timing-function: ease;
+  opacity: 0;
+}
+
+.delay-a {animation-delay: 0.125s;}
+.delay-b {animation-delay: 0.250s;}
+.delay-c {animation-delay: 0.375s;}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(20px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+.fadeInRight {animation-name: fadeInRight;}
+.fadeInUp {animation-name: fadeInUp;}
+.fadeOutUp {animation-name: fadeOutUp;}

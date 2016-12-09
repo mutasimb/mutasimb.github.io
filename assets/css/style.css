@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Raleway:400,700");
 
+@import url(animation.css);
+
 * {
   box-sizing: border-box;
 }
@@ -68,7 +70,7 @@ header {
   height: 100%;
   width: 50%;
   padding-left: 5vw;
-  padding-right: 30px;
+  padding-right: 5vw;
   padding-bottom: 60px;
 }
 
@@ -140,71 +142,67 @@ header .navigation li#under-construction {
   animation-duration: 0.5s !important;
 }
 
-.animate,
-header .social .fa,
-header .navigation li {
-  animation-duration: 0.75s;
-  animation-fill-mode: both;
-  animation-timing-function: ease;
-  opacity: 0;
+header .navigation li#under-construction:not(.fadeInUp) {
+  visibility: hidden;
 }
 
-.delay-a {
-  animation-delay: 0.125s;
-}
-
-.delay-b {
-  animation-delay: 0.250s;
-}
-
-.delay-c {
-  animation-delay: 0.375s;
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translate3d(20px, 0, 0);
+@media (max-width: 1199px) {
+  header h1 {
+    font-size: 36px;
   }
 
-  to {
-    opacity: 1;
-    transform: none;
+  header h4 {
+    margin-top: 5px;
+    font-size: 12px;
+  }
+
+  header .social {
+    margin-top: 30px;
+  }
+
+  header .navigation {
+    margin-top: 100px;
   }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 10px, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes fadeOutUp {
-  from {
-    opacity: 1;
-    transform: none;
-  }
-
-  to {
-    opacity: 0;
-    transform: translate3d(0, -10px, 0);
+@media (max-width: 991px) {
+  header .navigation li#under-construction::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    right: 0;
+    bottom: 50%;
+    transform: translateY(50%);
+    width: 40vw;
+    height: 40px;
+    background-color: white;
   }
 }
 
-.fadeInRight {
-  animation-name: fadeInRight;
-}
+@media (max-width: 768px) {
+  body {
+    color: white;
+  }
 
-.fadeInUp {
-  animation-name: fadeInUp;
-}
+  body::before {
+    width: 100%;
+  }
 
-.fadeOutUp {
-  animation-name: fadeOutUp;
+  header {
+    width: 100%;
+    padding: 60px 15px;
+  }
+
+  header h4 {
+    color: rgba(255, 255, 255, 0.375);
+  }
+
+  header .social a {
+    color: rgba(255, 255, 255, 0.8125);
+  }
+
+  header .navigation li#under-construction {
+    display: none;
+  }
 }

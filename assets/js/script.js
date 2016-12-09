@@ -8,6 +8,7 @@ var removeClass = function(elem, strClass) {
 
 window.addEventListener("load", function() {
 
+  var initDelay = 500;
   var prelSec = document.getElementById("preloader");
   var socialBtns = document.querySelectorAll("header .social .fa");
   var navBtns = document.querySelectorAll("header .navigation li:not(#under-construction)");
@@ -20,13 +21,13 @@ window.addEventListener("load", function() {
     addClass(document.querySelector("header h1.animate"), "fadeInRight");
     addClass(document.querySelector("header h4.animate"), "fadeInRight");
 
-  }, 250);
+  }, initDelay);
 
   setTimeout(function() {
 
     prelSec.parentNode.removeChild(prelSec);
 
-  }, 500);
+  }, 250);
 
   setTimeout(function() {
 
@@ -34,7 +35,7 @@ window.addEventListener("load", function() {
       addClass(socialBtns[i], "fadeInUp");
     }
 
-  }, 750);
+  }, initDelay + 500);
 
   setTimeout(function() {
 
@@ -54,6 +55,6 @@ window.addEventListener("load", function() {
       });
     }
 
-  }, 1250);
+  }, initDelay + 1000);
 
 });
