@@ -113,6 +113,21 @@ header .social a + a li {
   margin-left: 22.5px;
 }
 
+header #under-construction {
+  position: absolute;
+  right: 5vw;
+  bottom: 60px;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  animation-duration: 0.5s !important;
+}
+
+header #under-construction:not(.fadeInUp) {
+  visibility: hidden;
+}
+
 header .navigation {
   position: relative;
   width: 100%;
@@ -120,6 +135,7 @@ header .navigation {
   margin-bottom: 0;
   padding-left: 0;
   list-style-type: none;
+  transition: all 0.25s ease;
 }
 
 header .navigation li {
@@ -132,18 +148,6 @@ header .navigation li {
 
 header .navigation li + li {
   margin-left: 30px;
-}
-
-header .navigation li#under-construction {
-  position: absolute;
-  right: 0;
-  margin-left: 0;
-  cursor: auto;
-  animation-duration: 0.5s !important;
-}
-
-header .navigation li#under-construction:not(.fadeInUp) {
-  visibility: hidden;
 }
 
 @media (max-width: 1199px) {
@@ -166,17 +170,9 @@ header .navigation li#under-construction:not(.fadeInUp) {
 }
 
 @media (max-width: 991px) {
-  header .navigation li#under-construction::before {
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    right: 0;
-    bottom: 50%;
-    transform: translateY(50%);
-    width: 40vw;
-    height: 40px;
-    background-color: white;
+  header #under-construction.fadeInUp + .navigation {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -202,7 +198,7 @@ header .navigation li#under-construction:not(.fadeInUp) {
     color: rgba(255, 255, 255, 0.8125);
   }
 
-  header .navigation li#under-construction {
-    display: none;
+  header .navigation {
+    margin-top: 60px;
   }
 }
