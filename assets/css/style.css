@@ -28,6 +28,7 @@ html {
 
 body {
   position: relative;
+  z-index: -1000;
   margin: 0;
   height: 100%;
   font-family: 'Raleway', sans-serif;
@@ -38,6 +39,7 @@ body::before {
   content: "";
   display: block;
   position: absolute;
+  z-index: -1;
   top: 0;
   right: 0;
   width: 50%;
@@ -49,13 +51,20 @@ body::before {
 }
 
 body::after {
+  content: "";
   display: block;
   position: absolute;
+  z-index: -1;
   top: 0;
   right: 0;
   height: 100vh;
   width: 50%;
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: transparent;
+  transition: background-color 0.25s ease;
+}
+
+body.hide-pic::after {
+  background-color: white;
 }
 
 header {
@@ -185,9 +194,14 @@ header .navigation li + li {
     width: 100%;
   }
 
+  body::after {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+
   header {
     width: 100%;
-    padding: 60px 15px;
+    padding: 60px 15px 30px;
   }
 
   header h4 {
@@ -196,6 +210,11 @@ header .navigation li + li {
 
   header .social a {
     color: rgba(255, 255, 255, 0.8125);
+  }
+
+  header #under-construction {
+    right: 15px;
+    bottom: 30px;
   }
 
   header .navigation {
