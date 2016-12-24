@@ -239,7 +239,6 @@ $form-border-color-focus: #111111;
     margin-top: 15px;
     margin-bottom: 30px;
     @media (max-width: 768px) {margin-bottom: 45px;}
-    @media (max-width: 414px) {margin-top: 0;}
   }
   .contact-form {
     display: flex;
@@ -263,7 +262,7 @@ $form-border-color-focus: #111111;
       transition: border-color 0.25s ease;
       animation-duration: 0.5s;
       @media (max-width: 1199px) {font-size: 12px;}
-      @media (max-width: 414px) {margin-bottom: 5px;}
+      @media (max-width: 414px) {margin-bottom: 10px;}
       &:focus {
         outline: none;
         border-color: $form-border-color-focus;
@@ -273,12 +272,14 @@ $form-border-color-focus: #111111;
       padding: 0 12px;
       border-bottom: 1px solid $form-border-color;
       height: 35px;
+      @media (max-width: 414px) {height: 30px;}
       &[type="submit"] {
         cursor: pointer;
         align-self: flex-end;
         margin-bottom: 0;
         border: 1px solid $form-border-color-focus;
         width: 160px;
+        @media (max-width: 414px) {width: 120px;}
       }
     }
     textarea {
@@ -298,6 +299,7 @@ $form-border-color-focus: #111111;
     margin-top: 30px;
     @media (max-width: 1199px) and (min-width: 769px) {flex-flow: column nowrap;}
     @media (max-width: 480px) {flex-flow: column nowrap;}
+    @media (max-width: 414px) {margin-top: 15px;}
     h3 {
       margin: 0;
       font-weight: 700;
