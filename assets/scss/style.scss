@@ -215,6 +215,7 @@ $form-border-color-focus: #111111;
     height: 100%;
     width: 100%;
     padding: 0 15px;
+    overflow: hidden;
   }
   &.visible {
     display: flex;
