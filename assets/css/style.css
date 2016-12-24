@@ -412,7 +412,22 @@ header .navigation li + li {
   }
 
   #contact .contact-info h3 + h3 {
-    margin-top: 10px;
+    margin-top: 5px;
+  }
+}
+
+@media (max-width: 414px) {
+  #contact .flex-wrapper {
+    margin-top: 0;
+  }
+
+  #contact .contact-form h2 {
+    margin-bottom: 5px;
+  }
+
+  #contact .contact-form input,
+  #contact .contact-form textarea {
+    margin-bottom: 5px;
   }
 }
 
