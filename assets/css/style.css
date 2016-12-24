@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Raleway:400,700");
+@import url("https://fonts.googleapis.com/css?family=Libre+Baskerville:400,700|Raleway:400,600,700");
 
 @import url(animation.css);
 
@@ -30,6 +30,7 @@ body {
   position: relative;
   z-index: -1000;
   margin: 0;
+  overflow: hidden;
   height: 100%;
   font-family: 'Raleway', sans-serif;
   color: #111111;
@@ -60,11 +61,11 @@ body::after {
   height: 100vh;
   width: 50%;
   background-color: transparent;
-  transition: background-color 0.25s ease;
+  transition: background-color 0.5s ease;
 }
 
-body.hide-pic::after {
-  background-color: white;
+body.grey-overlay::after {
+  background-color: #efefef;
 }
 
 header {
@@ -73,7 +74,6 @@ header {
   justify-content: flex-end;
   align-items: flex-start;
   position: fixed;
-  top: 0;
   left: 0;
   bottom: 0;
   height: 100%;
@@ -122,18 +122,38 @@ header .social a + a li {
   margin-left: 22.5px;
 }
 
-header #under-construction {
+header #nav-return {
   position: absolute;
+  z-index: 1;
   right: 5vw;
   bottom: 60px;
   margin: 0;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 12px;
-  animation-duration: 0.5s !important;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
 }
 
-header #under-construction:not(.fadeInUp) {
+header #nav-return.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+header #under-construction {
+  position: absolute;
+  left: 5vw;
+  bottom: 60px;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  animation-duration: 0.75s !important;
+}
+
+header #under-construction:not(.fadeIn) {
   visibility: hidden;
 }
 
@@ -144,7 +164,15 @@ header .navigation {
   margin-bottom: 0;
   padding-left: 0;
   list-style-type: none;
-  transition: all 0.25s ease;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+header .navigation.animate {
+  opacity: 1;
+}
+
+header .navigation.fadeOut {
+  visibility: hidden;
 }
 
 header .navigation li {
@@ -157,6 +185,112 @@ header .navigation li {
 
 header .navigation li + li {
   margin-left: 30px;
+}
+
+#contact {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  height: 100%;
+  width: 50%;
+  padding: 0 5vw;
+}
+
+#contact.visible {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+#contact h1 {
+  align-self: flex-end;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 72px;
+  color: rgba(17, 17, 17, 0.1);
+}
+
+#contact .flex-wrapper {
+  align-self: stretch;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+#contact .contact-form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+
+#contact .contact-form h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+#contact .contact-form input,
+#contact .contact-form textarea {
+  margin-bottom: 15px;
+  border: none;
+  background-color: transparent;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #111111;
+  transition: border-color 0.25s ease;
+  animation-duration: 0.5s;
+}
+
+#contact .contact-form input:focus,
+#contact .contact-form textarea:focus {
+  outline: none;
+  border-color: #111111;
+}
+
+#contact .contact-form input {
+  padding: 0 12px;
+  border-bottom: 1px solid #888888;
+  height: 35px;
+}
+
+#contact .contact-form input[type="submit"] {
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 0;
+  border: 1px solid #111111;
+  width: 160px;
+}
+
+#contact .contact-form textarea {
+  resize: none;
+  padding: 12px;
+  border: 1px solid #888888;
+  height: 90px;
+}
+
+#contact .contact-form input.invalid,
+#contact .contact-form textarea.invalid {
+  border-color: #ff4136;
+}
+
+#contact .contact-info {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+#contact .contact-info h3 {
+  margin: 0;
+  font-weight: 700;
+  font-size: 12px;
+  color: #111111;
+}
+
+#contact .contact-info h3 i {
+  margin-right: 5px;
 }
 
 @media (max-width: 1199px) {
@@ -176,12 +310,19 @@ header .navigation li + li {
   header .navigation {
     margin-top: 100px;
   }
-}
 
-@media (max-width: 991px) {
-  header #under-construction.fadeInUp + .navigation {
-    opacity: 0;
-    visibility: hidden;
+  #contact h1 {
+    font-size: 48px;
+    letter-spacing: 3px;
+  }
+
+  #contact .contact-form h2 {
+    font-size: 15px;
+  }
+
+  #contact .contact-form input,
+  #contact .contact-form textarea {
+    font-size: 12px;
   }
 }
 
@@ -199,9 +340,33 @@ header .navigation li + li {
     background-color: rgba(0, 0, 0, 0.3);
   }
 
+  body.grey-overlay {
+    color: #111111;
+  }
+
+  body.grey-overlay header h4 {
+    color: #aaaaaa;
+  }
+
+  body.grey-overlay header .social a {
+    color: #333333;
+  }
+
+  body.grey-overlay header h1,
+  body.grey-overlay header h4,
+  body.grey-overlay header .social {
+    display: none;
+  }
+
+  body.grey-overlay header .navigation {
+    margin-top: 0;
+  }
+
   header {
+    height: auto;
     width: 100%;
-    padding: 60px 15px 30px;
+    padding: 0 15px 30px;
+    top: initial;
   }
 
   header h4 {
@@ -212,12 +377,50 @@ header .navigation li + li {
     color: rgba(255, 255, 255, 0.8125);
   }
 
-  header #under-construction {
+  header #nav-return {
     right: 15px;
+    bottom: 30px;
+  }
+
+  header #under-construction {
+    left: 15px;
     bottom: 30px;
   }
 
   header .navigation {
     margin-top: 60px;
+  }
+
+  #contact {
+    position: static;
+    top: initial;
+    left: initial;
+    height: 100%;
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  #contact .flex-wrapper {
+    margin-bottom: 45px;
+  }
+}
+
+@media (max-width: 480px) {
+  #contact .contact-info {
+    flex-flow: column nowrap;
+  }
+
+  #contact .contact-info h3 + h3 {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 769px) {
+  #contact .contact-info {
+    flex-flow: column nowrap;
+  }
+
+  #contact .contact-info h3 + h3 {
+    margin-top: 10px;
   }
 }

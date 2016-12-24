@@ -31,14 +31,48 @@
       <li><i class="fa fa-github delay-c" aria-hidden="true"></i></li>
     </a>
   </ul>
+  <h3 id="nav-return"><i class="fa fa-chevron-left" aria-hidden="true"></i></h3>
   <h3 id="under-construction">Under Construction!</h3>
   <ul class="navigation">
-    <li>About</li>
-    <li class="delay-a">Works</li>
-    <li class="delay-b">Contact</li>
+    <li id="nav-about">About</li>
+    <li id="nav-works" class="delay-a">Works</li>
+    <li id="nav-contact" class="delay-b">Contact</li>
   </ul>
 </header>
 
+<section id="contact">
+  <h1>Contact</h1>
+  <div class="flex-wrapper">
+    <form class="contact-form" name="contactForm" novalidate>
+      <h2>Drop me a message</h2>
+      <input type="text" id="contact-name" name="contactName" placeholder="Your name" required>
+      <input class="delay-a" type="email" id="contact-email" name="contactEmail" placeholder="Your email" required>
+      <input class="delay-b" type="text" id="contact-phone" name="contactPhone" placeholder="Your phone no. (Optional)">
+      <textarea class="delay-c" name="contactMessage" placeholder="Advise me, hire me, scold me, or just say hi!" required></textarea>
+      <input class="delay-d" type="submit" name="contactSubmit" value="Send">
+    </form>
+    <div class="contact-info">
+      <h3 class="contact-email"><i class="fa fa-paper-plane" aria-hidden="true"></i> mutasim.wre@gmail.com</h3>
+      <h3 class="contact-phone delay-a"><i class="fa fa-phone" aria-hidden="true"></i> +88 018 2436 7257</h3>
+      <h3 class="contact-place delay-b"><i class="fa fa-map-marker" aria-hidden="true"></i> Dhaka, Bangladesh</h3>
+    </div>
+  </div>
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBZLbMjTB819AvNs51MdjuaiC7MBKD8yDI",
+    authDomain: "mutasimbgithub.firebaseapp.com",
+    databaseURL: "https://mutasimbgithub.firebaseio.com",
+    storageBucket: "mutasimbgithub.appspot.com",
+    messagingSenderId: "887998212303"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script type="text/javascript" src="assets/js/firebase_contact.js"></script>
 <script type="text/javascript" src="assets/js/script.js"></script>
 
 </body>
