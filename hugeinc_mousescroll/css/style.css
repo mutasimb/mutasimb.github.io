@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css?family=Oswald:400,700");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+  margin: 0;
+}
+
+body.disable {
+  height: 100vh;
+  overflow: hidden;
+}
+
+section {
+  height: 100%;
+  overflow: hidden;
+  transition: height 1s ease;
+}
+
+section div {
+  height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeeeee;
+}
+
+section div h1 {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+section div h1 span {
+  font-weight: 700;
+}
+
+section#sec-2 div {
+  background-image: url("https://i.ytimg.com/vi/MFrRIcxzJmU/maxresdefault.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+section#sec-4 div {
+  background-color: white;
+  background-image: url("https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2015/07/1436400994PHPNodeReply2.jpg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+section#sec-5 div {
+  background-image: url("http://learntocodewith.me/wp-content/uploads/2014/06/python-2-vs-python-31-780x350.jpg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+section#sec-8 div h1 {
+  font-size: 32px;
+}
+
+section.slide {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+section.slide.active {
+  z-index: 100;
+}
+
+section.slide.inactive {
+  height: 0;
+  z-index: 100;
+}
+
+section.slide.next {
+  z-index: 99;
+}
+
+section.slide.next.inactive {
+  height: 100%;
+  z-index: 98;
+}
