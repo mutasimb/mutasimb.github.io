@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eqnApp">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Equation 7.14</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<section ng-controller="CalcController">
+  <div class="container">
+    <div class="row">
+      <div class="col-form col-xl-6 col-lg-8" ng-class="{ 'offset-xl-3': !vuTable.length && !tuTable.length, 'offset-lg-2': !vuTable.length && !tuTable.length }">
+        <div class="form-group row">
+          <label class="col-sm-5 col-7" for="input-bw"><em>b<sub>w</sub></em></label>
+          <div class="col-sm-7 col-5">
+            <input id="input-bw" class="form-control" type="number" ng-model="bw" placeholder="inch">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-5 col-7" for="input-d"><em>d</em></label>
+          <div class="col-sm-7 col-5">
+            <input id="input-d" class="form-control" type="number" ng-model="d" placeholder="inch">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-5 col-7" for="input-aoh"><em>A<sub>oh</sub></em></label>
+          <div class="col-sm-7 col-5">
+            <input id="input-aoh" class="form-control" type="number" ng-model="aoh" placeholder="sq. inch">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-5 col-7" for="input-ph"><em>p<sub>h</sub></em></label>
+          <div class="col-sm-7 col-5">
+            <input id="input-ph" class="form-control" type="number" ng-model="ph" placeholder="inch">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-5 col-7" for="input-rhs"><em>&phi; ( <sup>V<sub>c</sub></sup> &frasl; <sub>b<sub>w</sub>d</sub> + <sup>T<sub>u</sub>p<sub>u</sub></sup> &frasl; <sub>1.7A<sub>oh</sub><sup>2</sup></sub>)</em></label>
+          <div class="col-sm-7 col-5">
+            <input id="input-rhs" class="form-control" type="number" ng-model="rhs" placeholder="ksi">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-5 col-7" for="select-varChosen">Trial Variable</label>
+          <div class="col-sm-7 col-5">
+            <select class="custom-select" ng-model="varChosen.elem" id="select-varChosen" style="width: 100%;">
+              <option value="0" selected>Vu (kip)</option>
+              <option value="1">Tu (ft-kip)</option>
+            </select>
+            <label>Trial range</label>
+            <div class="form-group row">
+              <div class="col-sm-6" style="margin-bottom: 16px;">
+                <input class="form-control" type="number" placeholder="Lower value" ng-model="varChosen.lower">
+              </div>
+              <div class="col-sm-6" style="margin-bottom: 16px;">
+                <input class="form-control" type="number" placeholder="Upper value" ng-model="varChosen.upper">
+              </div>
+              <div class="col-12">
+                <input class="form-control" type="number" placeholder="Iteration count" ng-model="varChosen.iter">
+              </div>
+            </div>
+          </div>
+        </div>
+        <button type="button" name="button" class="btn btn-lg btn-block btn-outline-primary" ng-click="calc()">Evaluate</button>
+      </div>
+      <div class="col-xl-6 col-lg-4">
+        <table cellspacing="0" ng-show="vuTable.length" class="table table-default">
+          <thead>
+            <tr>
+              <th>V<sub>u</sub> (kip)</th>
+              <th>T<sub>u</sub> (ft-kip)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="x in vuTable">
+              <td>{{ rounding(x.iVu, 3) }}</td>
+              <td>{{ isNan(x.iTu) ? "Invalid value" : rounding(x.iTu, 3) }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table cellspacing="0" ng-show="tuTable.length" class="table table-default">
+          <thead>
+            <tr>
+              <th>T<sub>u</sub> (ft-kip)</th>
+              <th>V<sub>u</sub> (kip)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="x in tuTable">
+              <td>{{ rounding(x.iTu, 3) }}</td>
+              <td>{{ isNan(x.iVu) ? "Invalid value" : rounding(x.iVu, 3) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<script src="js/angular.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

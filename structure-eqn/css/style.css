@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 30px 0;
+  position: relative;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+body::before {
+  content: '';
+  display: block;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-image: url(../img/bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.15;
+}
+
+section label {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 20px;
+  margin-bottom: 0;
+  line-height: 38px;
+}
+
+section input,
+section select {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+section .btn {
+  font-family: 'Roboto Condensed', sans-serif;
+  background-color: white;
+}
+
+table {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4.8px;
+  background-color: white;
+}
+
+@media (max-width: 991px) {
+  section .col-form {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 414px) {
+  section label {
+    font-size: 16px;
+  }
+}
