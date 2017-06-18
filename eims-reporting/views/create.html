@@ -1,0 +1,76 @@
+<section id="create" layout="column" class="container" style="max-width: 640px; margin-left: auto; margin-right: auto;">
+  <md-content id="content" flex layout-padding>
+
+    <div layout="column" class="active">
+      <md-input-container flex>
+        <label>Project name</label>
+        <input ng-model="project.name">
+      </md-input-container>
+      <md-input-container flex>
+        <label>Project code</label>
+        <input ng-model="project.code">
+      </md-input-container>
+      <md-button ng-click="next()">Next</md-button>
+    </div>
+
+
+    <div layout="column">
+      <div layout="row">
+        <md-input-container flex>
+          <label>Address</label>
+          <input ng-model="project.address">
+        </md-input-container>
+        <md-input-container flex="25">
+          <label>District</label>
+          <input ng-model="project.dist">
+        </md-input-container>
+      </div>
+      <md-button ng-click="next()">Next</md-button>
+    </div>
+
+
+    <div layout="column">
+      <md-input-container>
+        <label>Project Type</label>
+        <md-select ng-model="project.type">
+          <md-option><em>Select</em></md-option>
+          <md-option value="renovation">Renovation</md-option>
+          <md-option value="retrofitting">Retrofitting</md-option>
+        </md-select>
+      </md-input-container>
+      <md-button ng-click="next()">Next</md-button>
+    </div>
+
+
+    <div layout="column">
+      <div ng-repeat="ms in milestones">
+        <h2>Milestone {{ ms.id }}</h2>
+        <md-input-container ng-repeat="msTask in ms.tasks">
+          <label>Task name</label>
+          <input type="text" ng-model="msTask.name">
+        </md-input-container>
+        <md-button ng-click="addTask($event)" data-msid="{{ ms.id }}">Add Task</md-button>
+      </div>
+      <md-button ng-click="addMS()">Add Milestone</md-button>
+      <md-button ng-click="next()">Next</md-button>
+    </div>
+
+
+    <div layout="column">
+      <div ng-repeat="ms in milestones">
+        <h2>Milestone {{ ms.id }}</h2>
+        <div layout="row" ng-repeat="msTask in ms.tasks">
+          <h4 flex>{{msTask.name}}</h4>
+          <md-input-container flex="20">
+            <label>Task weight (%)</label>
+            <input type="number" ng-model="msTask.weight" min="0" max="100">
+          </md-input-container>
+        </div>
+      </div>
+      <md-button ng-click="createProject()">Create Project</md-button>
+      {{ milestones }}
+    </div>
+
+  </md-content>
+  <a href="#!/home" id="go-home" style="display: none;">Home</a>
+</section>

@@ -1,0 +1,49 @@
+.lightblue {
+  background-color: lightblue;
+}
+
+.lightgreen {
+  background-color: lightgreen;
+}
+
+md-list-item {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+md-list-item .md-button {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: left;
+  width: 100%;
+}
+
+#create #content > div:not(.active),
+#submit #content > div:not(.active),
+#report #content > div:not(.active) {
+  display: none;
+}
+
+#report table {
+  border: 1px solid black;
+}
+
+#report table th,
+#report table td {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+#report table .report-milestones tr td:last-child {
+  border: none;
+}
+
+#report table .report-milestones tr:not(:first-child) td:first-child,
+#report table .report-milestones tr:not(:first-child) td:last-child {
+  display: none;
+}
+
+#report table .report-milestones + .report-milestones tr:first-child td:last-child {
+  display: none;
+}

@@ -1,0 +1,97 @@
+<section id="submit"
+         layout="column"
+         class="container"
+         style="max-width: 640px; margin-left: auto; margin-right: auto;">
+  <md-content id="content" flex layout-padding>
+
+
+    <div layout="column" class="active">
+      <md-button class="md-raised"
+                 ng-repeat="project in projectsList"
+                 ng-click="clickedProject(project)">
+        <p>{{ project.meta.name }}</p>
+        <p>Address: {{ project.meta.address }}, {{ project.meta.dist }}</p>
+        <p>Type: {{ project.meta.type }}</p>
+      </md-button>
+    </div>
+
+
+    <div layout="column">
+      <p>{{ selectedProject.meta.name }}</p>
+      <p>Address: {{ selectedProject.meta.address }}, {{ selectedProject.meta.dist }}</p>
+      <p>Type: {{ selectedProject.meta.type }}</p>
+      <div ng-repeat="(km, vm) in selectedProject.milestones">
+        <p>Milestone {{ shorten(km) }}</p>
+        <p ng-repeat="(kt, vt) in vm">Task {{ shorten(kt) }}: {{ vt.name }}</p>
+      </div>
+      <md-button ng-click="next()">Proceed to reporting</md-button>
+    </div>
+
+
+    <div layout="column">
+      <md-input-container>
+        <label>Submitted by</label>
+        <input type="text" ng-model="report.meta.submittedBy">
+      </md-input-container>
+      <md-input-container>
+        <label>Submitted to</label>
+        <input type="text" ng-model="report.meta.submittedTo">
+      </md-input-container>
+      <h4>Date</h4>
+      <md-datepicker ng-model="report.meta.date"></md-datepicker>
+      <h4>Date of Last Visit</h4>
+      <md-datepicker ng-model="report.meta.dateLast"></md-datepicker>
+      <h4>Date of Next Visit</h4>
+      <md-datepicker ng-model="report.meta.dateNext"></md-datepicker>
+      <md-button ng-click="next()">Next</md-button>
+    </div>
+
+
+    <div layout="column">
+      <p>{{ selectedProject.meta.name }}</p>
+      <p>Address: {{ selectedProject.meta.address }}, {{ selectedProject.meta.dist }}</p>
+      <p>Type: {{ selectedProject.meta.type }}</p>
+      <div ng-repeat="(km, vm) in selectedProject.milestones">
+        <p>Milestone {{ shorten(km) }}</p>
+        <div ng-repeat="(kt, vt) in vm" layout="row">
+          <p flex>Task {{ shorten(kt) }}: {{ vt.name }}</p>
+          <md-input-container flex="20">
+            <label>Progress (%)</label>
+            <input type="number" ng-model="report.progress[km][kt]">
+          </md-input-container>
+        </div>
+      </div>
+      <md-button ng-click="next()">Next</md-button>
+    </div>
+
+
+    <div layout="column">
+      <h4>Start Date of Work</h4>
+      <md-datepicker ng-model="report.remarks.dateStart"></md-datepicker>
+      <md-input-container>
+        <label>Progress</label>
+        <input type="text" ng-model="report.remarks.progress">
+      </md-input-container>
+      <md-input-container>
+        <label>Quality issues</label>
+        <input type="text" ng-model="report.remarks.quality">
+      </md-input-container>
+      <md-input-container>
+        <label>Safety issues</label>
+        <input type="text" ng-model="report.remarks.safety">
+      </md-input-container>
+      <md-input-container>
+        <label>Weather constraints</label>
+        <input type="text" ng-model="report.remarks.weather">
+      </md-input-container>
+      <md-input-container>
+        <label>External constraints</label>
+        <input type="text" ng-model="report.remarks.external">
+      </md-input-container>
+      <h4>Project Target Date</h4>
+      <md-datepicker ng-model="report.remarks.dateTarget"></md-datepicker>
+      <md-button ng-click="submitObservation()">Submit Observation</md-button>
+    </div>
+
+  </md-content>
+</section>

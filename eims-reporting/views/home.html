@@ -1,0 +1,15 @@
+<section id="login"
+         layout="column"
+         class="container"
+         style="max-width: 640px; margin-left: auto; margin-right: auto;">
+  <md-button href="#!/submit"
+             class="md-primary md-raised"
+             ng-show="signedIn.permissions.visit">Submit Report</md-button>
+  <md-button href="#!/report"
+             class="md-raised"
+             ng-show="signedIn.permissions.view">View Reports</md-button>
+  <md-button href="#!/create"
+             class="md-raised"
+             ng-click="initCreate()"
+             ng-show="signedIn.permissions.create">Create Project</md-button>
+</section>

@@ -1,0 +1,23 @@
+<section id="login"
+         layout="column"
+         class="container"
+         style="max-width: 640px; margin-left: auto; margin-right: auto;">
+  <h1>EIMS</h1>
+  <md-input-container>
+    <label>User Email</label>
+    <input type="email" ng-model="userAuth.email">
+  </md-input-container>
+  <md-input-container>
+    <label>Password</label>
+    <input type="password" ng-model="userAuth.pass">
+  </md-input-container>
+  <md-button class="md-primary md-raised" ng-click="userLogin($event)">Login</md-button>
+  <md-button class="md-raised" ng-click="checkAuth()">Check Auth</md-button>
+  <!-- <md-button href="#!/submit"
+             class="md-primary md-raised">Submit Report</md-button>
+  <md-button href="#!/report"
+             class="md-raised">View Reports</md-button>
+  <md-button href="#!/create"
+             class="md-raised"
+             ng-click="initCreate()">Create Project</md-button> -->
+</section>

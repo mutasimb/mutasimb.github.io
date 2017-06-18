@@ -1,0 +1,122 @@
+<section id="report"
+         layout="column"
+         class="container"
+         style="max-width: 640px; margin-left: auto; margin-right: auto;">
+  <md-content id="content" flex layout-padding>
+
+    <div layout="column" class="active">
+      <div ng-repeat="prj in reportList">
+        <md-card md-theme="default" md-theme-watch ng-repeat="report in prj">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">{{ report.meta.name }}</span>
+              <span class="md-subhead">Submitted by <b>{{ report.metaReport.submittedBy }}</b> | Submission Date: <b>{{ timeToDate(report.metaReport.date) }}</b></span>
+            </md-card-title-text>
+            <md-card-title-media>
+              <div class="md-media-xs card-media"></div>
+            </md-card-title-media>
+          </md-card-title>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-primary" ng-click="clickedReport(report)">Read report</md-button>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </div>
+
+    <div layout="column">
+      <table cellspacing="0px">
+        <thead>
+          <tr>
+            <th colspan="9">Weekly Monitoring Report for Renovation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="2">Submitted By</td>
+            <td colspan="3">{{ viewingReport.metaReport.submittedBy }}</td>
+            <td colspan="2">Date</td>
+            <td colspan="2">{{ timeToDate(viewingReport.metaReport.date) }}</td>
+          </tr>
+          <tr>
+            <td colspan="2">Submitted To</td>
+            <td colspan="3">{{ viewingReport.metaReport.submittedTo }}</td>
+            <td colspan="2">Date of Last Visit</td>
+            <td colspan="2">{{ timeToDate(viewingReport.metaReport.dateLast) }}</td>
+          </tr>
+          <tr>
+            <td rowspan="2" colspan="5"></td>
+            <td colspan="2">Date of Next Visit</td>
+            <td colspan="2">{{ timeToDate(viewingReport.metaReport.dateNext) }}</td>
+          </tr>
+          <tr>
+            <td colspan="2">Period (Day)</td>
+            <td colspan="2">{{ (viewingReport.metaReport.date-viewingReport.metaReport.dateLast)/(3600*24*1000) }}</td>
+          </tr>
+          <tr>
+            <td colspan="2">Project Name</td>
+            <td colspan="7">{{ viewingReport.meta.name }}</td>
+          </tr>
+          <tr>
+            <td colspan="2">Project Location</td>
+            <td colspan="7">{{ viewingReport.meta.address }}<span ng-show="viewingReport.meta.address && viewingReport.meta.dist">, </span>{{ viewingReport.meta.dist }}</td>
+          </tr>
+          <tr>
+            <td rowspan="2">Milestone</td>
+            <td colspan="3">Sub Milestone</td>
+            <td rowspan="2">% Project Weight</td>
+            <td rowspan="2">% Completed Upto Date</td>
+            <td rowspan="2">% Overall Completion of Task</td>
+            <td rowspan="2">% Total Completion of Project</td>
+          </tr>
+          <tr>
+            <td>Sl. No.</td>
+            <td colspan="2">Description of Task</td>
+          </tr>
+        </tbody>
+        <tbody class="report-milestones" ng-repeat="(km, vm) in viewingReport.milestones">
+          <tr ng-repeat="(kt, vt) in vm">
+            <td rowspan="{{ viewingReport.metaMilestones[km] }}">Milestone {{ shorten(km) }}</td>
+            <td>{{ shorten(kt) }}</td>
+            <td colspan="2">{{ vt.name }}</td>
+            <td>{{ vt.weight }}%</td>
+            <td>{{ vt.progress }}%</td>
+            <td>{{ vt.weight * vt.progress / 100 }}%</td>
+            <td rowspan="{{ viewingReport.metaMilestones.countTasks }}" colspan="2">{{ viewingReport.metaMilestones.completion }}%</td>
+          </tr>
+        </tbody>
+        <tbody>
+          <tr>
+            <td colspan="9">Remarks</td>
+          </tr>
+          <tr>
+            <td colspan="2">Start Date of Work</td>
+            <td colspan="2">{{ timeToDate(viewingReport.remarks.dateStart) }}</td>
+            <td colspan="2">Project Target Date</td>
+            <td colspan="3">{{ timeToDate(viewingReport.remarks.dateTarget) }}</td>
+          </tr>
+          <tr>
+            <td colspan="2">Progress</td>
+            <td colspan="2">{{ viewingReport.remarks.progress }}</td>
+            <td colspan="2">Quality Issues</td>
+            <td colspan="3">{{ viewingReport.remarks.quality }}</td>
+          </tr>
+          <tr>
+            <td colspan="2">Safety Issues</td>
+            <td colspan="2">{{ viewingReport.remarks.safety }}</td>
+            <td colspan="2">Weather Constraints</td>
+            <td colspan="3">{{ viewingReport.remarks.weather }}</td>
+          </tr>
+          <tr>
+            <td colspan="2">External Constraints</td>
+            <td colspan="7">{{ viewingReport.remarks.external }}</td>
+          </tr>
+          <tr ng-show="viewingReport.remarks.comment">
+            <td colspan="2">Comments</td>
+            <td colspan="7"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </md-content>
+</section>
