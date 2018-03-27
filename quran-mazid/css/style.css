@@ -287,3 +287,114 @@ nav .nav-footer .social-btns a + a {
   line-height: 35px;
   color: #656565;
 }
+
+#settings {
+  position: fixed;
+  right: 0;
+  top: 87px;
+  bottom: 0;
+  z-index: 100;
+  height: calc(100% - 87px);
+  width: 350px;
+  background-color: #E9EEEE;
+  border-left: 1px solid #C7D5D4;
+}
+
+#settings .panel-group .panel {
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+#settings .panel-group .panel + .panel {
+  margin-top: 0;
+}
+
+#settings .panel-group .panel .panel-heading {
+  padding: 0 24px;
+  height: 67px;
+  border: 1px solid #C7D5D4;
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  background-color: #D1E0DE;
+}
+
+#settings .panel-group .panel .panel-heading .panel-title {
+  height: 100%;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+#settings .panel-group .panel .panel-heading .panel-title a {
+  display: block;
+  position: relative;
+  height: 100%;
+  line-height: 65px;
+  color: #6F8684;
+}
+
+#settings .panel-group .panel .panel-heading .panel-title a .fa:first-child {
+  width: 25px;
+  text-align: center;
+  font-size: 24px;
+  margin-right: 25px;
+  color: #7BA39C;
+}
+
+#settings .panel-group .panel .panel-heading .panel-title a .fa:not(:first-child) {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  line-height: 65px;
+  color: #A8A08A;
+}
+
+#settings .panel-group .panel .panel-heading .panel-title a.collapsed .fa-caret-up {
+  display: none;
+}
+
+#settings .panel-group .panel .panel-heading .panel-title a:not(.collapsed) .fa-caret-down {
+  display: none;
+}
+
+#settings .panel-group .panel .panel-body {
+  border-top: 0;
+  background-color: transparent;
+}
+
+#settings .panel-group .panel .panel-body .panel-dropdown {
+  display: flex;
+  flex-direction: row;
+}
+
+#settings .panel-group .panel .panel-body .panel-dropdown .btn {
+  border-radius: 2px;
+  background-color: white;
+  height: 50px;
+  width: calc(100% - 60px);
+}
+
+#settings .panel-group .panel .panel-body .panel-dropdown .btn:focus {
+  outline: none;
+}
+
+#settings .panel-group .panel .panel-body .panel-dropdown .btn:not(.dropdown-toggle) {
+  text-align: left;
+}
+
+#settings .panel-group .panel .panel-body .panel-dropdown .btn.dropdown-toggle {
+  width: 60px;
+  border-left: 1px solid #EEEBE3;
+}
+
+#settings .panel-group .panel .panel-body .panel-dropdown .dropdown-menu {
+  width: 100%;
+}
+
+#settings .panel-group .panel .panel-body .panel-dropdown.open .btn.dropdown-toggle {
+  box-shadow: none;
+}
