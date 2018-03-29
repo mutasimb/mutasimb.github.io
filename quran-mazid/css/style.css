@@ -15,6 +15,7 @@ body {
 }
 
 header {
+  display: flex;
   position: fixed;
   top: 0;
   left: 0;
@@ -55,6 +56,83 @@ header .surah-name .arabic::before {
 
 header .surah-name .arabic::after {
   content: ")";
+}
+
+header .search {
+  position: relative;
+  flex-grow: 1;
+  height: 87px;
+}
+
+header .search::before {
+  position: absolute;
+  content: "\f002";
+  font-family: "FontAwesome";
+  right: 45px;
+  top: 0;
+  bottom: 0;
+  line-height: 87px;
+  font-size: 44px;
+  color: #7BA39C;
+}
+
+header .search .search-input {
+  border: none;
+  background: none;
+  height: 100%;
+  width: 100%;
+}
+
+header .user-btn {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+  padding-left: 13px;
+  padding-right: 13px;
+  width: 250px;
+  height: 87px;
+  border: none;
+  border-left: 1px solid #C7D5D4;
+  border-right: 1px solid #C7D5D4;
+  background: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 20px;
+  text-align: left;
+  line-height: 87px;
+}
+
+header .user-btn .user-name {
+  flex-grow: 1;
+  color: #8A9D9C;
+}
+
+header .user-btn .fa {
+  vertical-align: middle;
+}
+
+header .user-btn .fa.fa-user {
+  margin-right: 15px;
+  font-size: 44px;
+  color: #7BA39C;
+}
+
+header .user-btn .fa.fa-caret-down {
+  color: #C0B89F;
+}
+
+header .help-btn {
+  width: 100px;
+  height: 87px;
+  background: none;
+  border: none;
+}
+
+header .help-btn .fa {
+  font-size: 44px;
+  color: #7BA39C;
 }
 
 nav {
