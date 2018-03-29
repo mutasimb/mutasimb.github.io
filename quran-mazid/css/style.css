@@ -62,10 +62,12 @@ header .search {
   position: relative;
   flex-grow: 1;
   height: 87px;
+  z-index: 99;
 }
 
 header .search::before {
   position: absolute;
+  z-index: -1;
   content: "\f002";
   font-family: "FontAwesome";
   right: 45px;
