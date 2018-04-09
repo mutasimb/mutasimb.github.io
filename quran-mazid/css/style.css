@@ -27,11 +27,17 @@ header {
 
 header .brand {
   display: block;
+  position: relative;
   width: 280px;
+  height: 70px;
+  overflow: hidden;
 }
 
 header .brand img {
-  width: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 280px;
 }
 
 header .surah-name {
@@ -298,6 +304,7 @@ nav .nav-footer .social-btns a + a {
 }
 
 #surah {
+  margin-top: 123px;
   padding: 30px 0;
 }
 
@@ -323,13 +330,6 @@ nav .nav-footer .social-btns a + a {
   padding: 75px 15px 64px;
 }
 
-#surah .ayah .ayah-wrapper::before {
-  content: url(../images/bullet.png);
-  position: absolute;
-  left: calc(100% + 24px);
-  top: 75px;
-}
-
 #surah .ayah .surah-ayah-index {
   position: absolute;
   right: calc(100% + 24px);
@@ -337,6 +337,12 @@ nav .nav-footer .social-btns a + a {
   font-family: 'Scheherazade', serif;
   font-size: 30px;
   color: #29A87D;
+}
+
+#surah .ayah .ayah-bullet {
+  position: absolute;
+  left: calc(100% + 24px);
+  top: 75px;
 }
 
 #surah .ayah .ayah-p {
@@ -349,10 +355,6 @@ nav .nav-footer .social-btns a + a {
 
 #surah .ayah .ayah-btns {
   display: none;
-  flex-flow: column nowrap;
-  position: absolute;
-  top: 170px;
-  right: calc(100% + 30px);
 }
 
 #surah .ayah .ayah-btns .btn-ayah {
@@ -364,10 +366,6 @@ nav .nav-footer .social-btns a + a {
   width: 30px;
   color: #AAC1BF;
   cursor: pointer;
-}
-
-#surah .ayah .ayah-btns .btn-ayah + .btn-ayah {
-  margin-top: 10px;
 }
 
 #surah .ayah:hover .ayah-btns {
@@ -488,7 +486,7 @@ nav .nav-footer .social-btns a + a {
   border-radius: 2px;
   background-color: white;
   height: 40px;
-  width: calc(100% - 48px);
+  width: calc(100% - 40px);
   font-size: 14px;
 }
 
@@ -501,7 +499,7 @@ nav .nav-footer .social-btns a + a {
 }
 
 #settings .panel-group .panel .panel-body .panel-dropdown .btn.dropdown-toggle {
-  width: 48px;
+  width: 40px;
   border-left: 1px solid #EEEBE3;
 }
 
@@ -511,4 +509,126 @@ nav .nav-footer .social-btns a + a {
 
 #settings .panel-group .panel .panel-body .panel-dropdown.open .btn.dropdown-toggle {
   box-shadow: none;
+}
+
+@media (min-width: 641px) {
+  header .search .search-input {
+    min-width: 400px;
+  }
+}
+
+@media (min-width: 992px) {
+  #surah .ayah .ayah-btns {
+    flex-flow: column nowrap;
+    position: absolute;
+    top: 170px;
+    right: calc(100% + 30px);
+  }
+
+  #surah .ayah .ayah-btns .btn-ayah + .btn-ayah {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 1520px) {
+  nav {
+    display: none;
+  }
+
+  #settings {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  #surah .ayah .surah-ayah-index {
+    position: static;
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  #surah .ayah .ayah-bullet {
+    left: auto;
+    top: 77px;
+    right: 15px;
+    width: 30px;
+  }
+
+  #surah .ayah .ayah-btns {
+    flex-flow: row nowrap;
+    position: absolute;
+    top: 80px;
+    left: 90px;
+  }
+
+  #surah .ayah .ayah-btns .btn-ayah + .btn-ayah {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 920px) {
+  header .user-btn {
+    width: 80px;
+  }
+
+  header .user-btn .user-name {
+    display: none;
+  }
+}
+
+@media (max-width: 820px) {
+  header .brand {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  header {
+    height: 106px;
+  }
+
+  header .search {
+    height: 53px;
+  }
+
+  header .search::before {
+    line-height: 53px;
+  }
+
+  header .user-btn {
+    width: 82px;
+    height: 53px;
+    line-height: 53px;
+  }
+
+  header .help-btn {
+    min-width: 53px;
+    width: 53px;
+    height: 53px;
+  }
+
+  nav {
+    top: 53px;
+    height: calc(100% - $header-top-small);
+  }
+
+  #surah {
+    margin-top: 106px;
+  }
+
+  #settings {
+    top: 53px;
+  }
+}
+
+@media (max-width: 640px) {
+  header .brand {
+    display: none;
+  }
+}
+
+@media (max-width: 543px) {
+  #surah .ayah .translation {
+    margin-top: 30px;
+  }
 }
