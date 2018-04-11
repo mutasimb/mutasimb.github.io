@@ -154,6 +154,25 @@ header .help-btn .fa {
   color: #7BA39C;
 }
 
+header .left-menu-btn {
+  position: absolute;
+  border: none;
+  background: none;
+  left: 0;
+  top: 70px;
+}
+
+header .left-menu-btn:focus {
+  outline: none;
+}
+
+header .left-menu-btn .fa {
+  line-height: 53px;
+  width: 35px;
+  font-size: 20px;
+  color: #19443D;
+}
+
 nav {
   position: fixed;
   left: 0;
@@ -162,7 +181,12 @@ nav {
   z-index: 100;
   height: calc(100% - $header-top);
   width: 280px;
+  transition: all 0.25s ease;
+}
+
+nav .nav-wrapper {
   background-color: #265D54;
+  height: 100%;
 }
 
 nav .nav-btns {
@@ -191,6 +215,7 @@ nav .nav-btns .btn-nav.active {
 
 nav .nav-surah-list {
   position: absolute !important;
+  z-index: 0;
   top: 68px;
   bottom: 95px;
   left: 0;
@@ -301,6 +326,24 @@ nav .nav-footer .social-btns a {
 
 nav .nav-footer .social-btns a + a {
   margin-left: 37px;
+}
+
+nav .shade {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  top: 70px;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: all 0.1s ease-in;
+}
+
+nav.displayed .shade {
+  visibility: visible;
+  opacity: 1;
 }
 
 #surah {
@@ -532,7 +575,11 @@ nav .nav-footer .social-btns a + a {
 
 @media (max-width: 1520px) {
   nav {
-    display: none;
+    left: -280px;
+  }
+
+  nav.displayed {
+    left: 0;
   }
 
   #settings {
@@ -549,7 +596,7 @@ nav .nav-footer .social-btns a + a {
 
   #surah .ayah .ayah-bullet {
     left: auto;
-    top: 77px;
+    top: 32px;
     right: 15px;
     width: 30px;
   }
@@ -607,9 +654,17 @@ nav .nav-footer .social-btns a + a {
     height: 53px;
   }
 
+  header .left-menu-btn {
+    top: 53px;
+  }
+
   nav {
     top: 53px;
     height: calc(100% - $header-top-small);
+  }
+
+  nav .shade {
+    top: 53px;
   }
 
   #surah {
@@ -628,6 +683,14 @@ nav .nav-footer .social-btns a + a {
 }
 
 @media (max-width: 543px) {
+  #surah .ayah .ayah-wrapper {
+    padding: 30px 15px;
+  }
+
+  #surah .ayah .ayah-btns {
+    top: 35px;
+  }
+
   #surah .ayah .translation {
     margin-top: 30px;
   }
